@@ -1,49 +1,79 @@
-import { ArrowForwardIcon, Icon } from "@chakra-ui/icons";
-import { Button, Text } from "@chakra-ui/react";
+import { ArrowBackIcon, ArrowForwardIcon, Icon } from "@chakra-ui/icons";
+import { Button, ButtonProps, Text } from "@chakra-ui/react";
 import { FC, ReactNode } from "react";
 import { Link } from "react-router-dom";
 
-const SpaceButton: FC<{
+interface SpaceButtonProps extends ButtonProps {
   children: ReactNode;
-  type?: "primary" | "secondary";
+  spaceButtonType?: "primary" | "secondary";
   href?: string;
-}> = ({ children, type = "primary", href }) => {
-  if (type === "secondary") {
+  spaceButtonLeftIcon?: boolean;
+}
+
+const SpaceButton: FC<SpaceButtonProps> = ({
+  children,
+  spaceButtonType = "primary",
+  href,
+  spaceButtonLeftIcon,
+  ...props
+}: SpaceButtonProps) => {
+  if (spaceButtonType === "secondary") {
     return (
-      <Button {...(href && { as: Link, to: href })}>
+      <Button
+        {...(href && { as: Link, to: href })}
+        {...props}
+        my={{ sm: "1.5rem", lg: "0px" }}
+      >
+        {spaceButtonLeftIcon && (
+          <Icon
+            as={ArrowBackIcon}
+            w="20px"
+            h="20px"
+            color="#fff"
+            fontSize="2xl"
+            transition="all .3s ease"
+            mx=".3rem"
+            cursor="pointer"
+            pt="4px"
+            _hover={{ transform: "translateX(20%)" }}
+          />
+        )}
         <Text
           fontSize="sm"
           color="#fff"
           fontWeight="bold"
           cursor="pointer"
           transition="all .3s ease"
-          my={{ sm: "1.5rem", lg: "0px" }}
           _hover={{ me: "4px" }}
         >
-          Whereas recognition of the inherent dignity
+          {children}
         </Text>
-        <Icon
-          as={ArrowForwardIcon}
-          w="20px"
-          h="20px"
-          color="#fff"
-          fontSize="2xl"
-          transition="all .3s ease"
-          mx=".3rem"
-          cursor="pointer"
-          pt="4px"
-          _hover={{ transform: "translateX(20%)" }}
-        />
+        {!spaceButtonLeftIcon && (
+          <Icon
+            as={ArrowForwardIcon}
+            w="20px"
+            h="20px"
+            color="#fff"
+            fontSize="2xl"
+            transition="all .3s ease"
+            mx=".3rem"
+            cursor="pointer"
+            pt="4px"
+            _hover={{ transform: "translateX(20%)" }}
+          />
+        )}
       </Button>
     );
   }
 
   return (
     <Button
+      {...props}
       variant="solid"
       size="lg"
       colorScheme="green"
-      rightIcon={<ArrowForwardIcon />}
+      {...(spaceButtonLeftIcon && { leftIcon: <ArrowBackIcon /> })}
+      {...(!spaceButtonLeftIcon && { rightIcon: <ArrowForwardIcon /> })}
       backgroundColor="green.300"
       color="blackAlpha.800"
       bgGradient="linear(to right, green.300,cyan.300)"

@@ -3,6 +3,7 @@ import Sidebar from "./Sidebar";
 import { Box, Flex } from "@chakra-ui/react";
 import useIsMobileOrTablet from "../../hooks/useIsMobileOrTablet";
 import SideBarMobile from "./SidebarMobile";
+import { tokens } from "../../theme/tokens";
 
 const Layout: FC<{ children: ReactNode }> = ({ children }) => {
   const isMobileOrTablet = useIsMobileOrTablet();
@@ -22,7 +23,14 @@ const Layout: FC<{ children: ReactNode }> = ({ children }) => {
           <Sidebar></Sidebar>
         )}
       </Box>
-      <Box {...(!isMobileOrTablet && { ml: 350, mt: 50 })}>{children}</Box>
+      <Box
+        w="100%"
+        {...(!isMobileOrTablet && { ml: 280, mt: 50 })}
+        my={tokens.spacing["3xl"]}
+        mr={tokens.spacing["3xl"]}
+      >
+        {children}
+      </Box>
     </Flex>
   );
 };
