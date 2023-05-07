@@ -1,16 +1,28 @@
 import { FC, ReactNode } from "react";
 import Sidebar from "./Sidebar";
 import { Box, Flex } from "@chakra-ui/react";
+import useIsMobileOrTablet from "../../hooks/useIsMobileOrTablet";
+import SideBarMobile from "./SidebarMobile";
 
 const Layout: FC<{ children: ReactNode }> = ({ children }) => {
+  const isMobileOrTablet = useIsMobileOrTablet();
+
   return (
-    <Flex w="100%" h="100%">
+    <Flex
+      w="100%"
+      h="100%"
+      {...(isMobileOrTablet && { direction: "column" })}
+      p={2}
+      gap={4}
+    >
       <Box>
-        <Sidebar></Sidebar>
+        {isMobileOrTablet ? (
+          <SideBarMobile></SideBarMobile>
+        ) : (
+          <Sidebar></Sidebar>
+        )}
       </Box>
-      <Box ml={350} mt={50}>
-        {children}
-      </Box>
+      <Box {...(!isMobileOrTablet && { ml: 350, mt: 50 })}>{children}</Box>
     </Flex>
   );
 };
