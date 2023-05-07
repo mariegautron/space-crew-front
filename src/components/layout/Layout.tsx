@@ -1,12 +1,20 @@
-import { FC, ReactNode } from "react";
+import { FC, ReactNode, useEffect } from "react";
 import Sidebar from "./Sidebar";
-import { Box, Flex } from "@chakra-ui/react";
+import { Box, Flex, useColorMode } from "@chakra-ui/react";
 import useIsMobileOrTablet from "../../hooks/useIsMobileOrTablet";
 import SideBarMobile from "./SidebarMobile";
 import { tokens } from "../../theme/tokens";
 
 const Layout: FC<{ children: ReactNode }> = ({ children }) => {
   const isMobileOrTablet = useIsMobileOrTablet();
+
+  const { colorMode, toggleColorMode } = useColorMode();
+
+  useEffect(() => {
+    if (colorMode === "light") {
+      toggleColorMode();
+    }
+  }, [colorMode, toggleColorMode]);
 
   return (
     <Flex

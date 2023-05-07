@@ -1,6 +1,6 @@
 import { Box, Flex } from "@chakra-ui/react";
 import { FC } from "react";
-import SpaceButton from "../atoms/SpaceButton/SpaceButton";
+import SpaceButton from "../atoms/SpaceButton";
 
 type Props = {
   currentPage: number;

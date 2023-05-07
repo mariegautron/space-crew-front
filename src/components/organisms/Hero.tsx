@@ -1,5 +1,5 @@
 import { Box, Container, Heading, Stack, Text } from "@chakra-ui/react";
-import SpaceButton from "../../atoms/SpaceButton/SpaceButton";
+import SpaceButton from "../atoms/SpaceButton";
 import { FC } from "react";
 
 const Hero: FC = () => {
