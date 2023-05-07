@@ -1,5 +1,5 @@
 import { FC } from "react";
-import Hero from "../components/organisms/Hero/Hero";
+import Hero from "../components/organisms/Hero";
 
 const Home: FC = () => {
   return (

@@ -9,7 +9,7 @@ Le projet a été créé pour aider les entreprises spatiales et les agences gou
 
 Nous espérons que vous apprécierez cette application et que vous trouverez toutes les fonctionnalités dont vous avez besoin pour gérer efficacement votre équipage spatial.
 
-![Preview application Space Crew](/public/preview.png)
+![Preview application Space Crew](/public/preview_1.png)
 
 
 ## 👨‍💻 Technologies utilisées
@@ -88,3 +88,25 @@ Le projet suit une structure de dossier basée sur **[Atomic Design](https://ato
     - molecules : des groupes d'atomes qui forment un élément plus complexe tel qu'un formulaire.
     - organisms : des groupes de molécules et d'atomes qui forment des parties autonomes de l'interface utilisateur
     - layout: tous les composants relatif au layout
+
+
+
+## Roadmap
+
+### Features
+
+- [x] Liste des astronautes
+- [ ] Ajouter un astronaute
+- [ ] Modifier un astronaute
+- [x] Suprimer un astronaute
+- [ ] Rechercher un astronaute (par nom ou mission)
+- [ ] Filtrer la liste d'astronautes (astronautes sans mission)
+- [ ] Affecter/supprimer une mission à un astronaute
+- [ ] S'inscrire/se connecter pour manipuler les astronautes
+
+
+### Autre
+
+- [ ] Linter/Formatter
+- [ ] Tests
+- [ ] Lancer front & back en une seule commande (Git submodules ?)
