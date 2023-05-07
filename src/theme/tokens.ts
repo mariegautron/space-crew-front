@@ -23,6 +23,7 @@ export const tokens = {
     xxl: "24px",
     "3xl": "28px",
     "4xl": "32px",
+    "5xl": "40px",
   },
   transition: {
     navbar: "0.2s linear",

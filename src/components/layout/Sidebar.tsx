@@ -25,15 +25,15 @@ const Sidebar: FC = () => {
           w="260px"
           maxW="260px"
           ms={{
-            sm: tokens.spacing.l,
+            sm: tokens.spacing.xs,
           }}
           my={{
-            sm: tokens.spacing.l,
+            sm: tokens.spacing.m,
           }}
           h="calc(100vh - 32px)"
           ps={tokens.spacing.xl}
           pe={tokens.spacing.xl}
-          m={`${tokens.spacing.l} 0px ${tokens.spacing.l} ${tokens.spacing.l}`}
+          m={`${tokens.spacing.m} 0px ${tokens.spacing.m} ${tokens.spacing.m}`}
           borderRadius={tokens.spacing.l}
         >
           <Box>
