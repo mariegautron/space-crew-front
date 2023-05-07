@@ -50,7 +50,7 @@ ou
 yarn dev
 ```
 
-Accédez à l'application à l'adresse suivante : http://localhost:3000.
+Accédez à l'application à l'adresse suivante : http://localhost:5173.
 ## 🚀 Build
 
 Pour créer une version de production de l'application, exécutez la commande suivante :
