@@ -8,35 +8,30 @@ import {
   AlertDialogOverlay,
   Flex,
 } from "@chakra-ui/react";
-import { RefObject, useRef } from "react";
-import { tokens } from "../../theme/tokens";
-import GradientBorder from "../atoms/GradientBackground";
-import SpaceButton from "../atoms/SpaceButton";
-import { useApi } from "../../contexts/ApiContext";
+import { RefObject } from "react";
+import { tokens } from "../../../theme/tokens";
+import GradientBorder from "../../atoms/GradientBackground";
+import SpaceButton from "../../atoms/SpaceButton";
 
-type ModalDeleteAstronautProps = {
+type ModalDeleteProps = {
   isOpen: boolean;
   onClose: () => void;
   astronautName: string;
-  astronautId: number;
+  cancelRef: RefObject<HTMLButtonElement>;
+  deleteAstronaut: () => void;
 };
 
-const ModalDeleteAstronaut = ({
+const ModalDelete = ({
   onClose,
   isOpen,
   astronautName,
-  astronautId,
-}: ModalDeleteAstronautProps) => {
-  const cancelRef = useRef<HTMLButtonElement | null>(null);
-
-  const { astronautService } = useApi();
-
-  const { mutate } = astronautService.useDeleteAstronaut();
-
+  cancelRef,
+  deleteAstronaut,
+}: ModalDeleteProps) => {
   return (
     <AlertDialog
       isOpen={isOpen}
-      leastDestructiveRef={cancelRef as RefObject<HTMLButtonElement>}
+      leastDestructiveRef={cancelRef}
       onClose={onClose}
       size="xl"
       isCentered
@@ -72,7 +67,7 @@ const ModalDeleteAstronaut = ({
                 icon={<DeleteIcon />}
                 spaceButtonLeftIcon
                 size="sm"
-                onClick={() => mutate(astronautId.toString())}
+                onClick={deleteAstronaut}
               >
                 Retraite anticipée
               </SpaceButton>
@@ -84,4 +79,4 @@ const ModalDeleteAstronaut = ({
   );
 };
 
-export default ModalDeleteAstronaut;
+export default ModalDelete;

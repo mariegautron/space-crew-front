@@ -10,18 +10,20 @@ import {
   useDisclosure,
 } from "@chakra-ui/react";
 import { FC } from "react";
-import { Astronaut } from "../../contexts/ApiContext/services/astronauts";
 import { tokens } from "../../theme/tokens";
 import SpaceButton from "../atoms/SpaceButton";
 import ModalDeleteAstronaut from "./ModalDeleteAstronaut";
+import StatusIndicator from "../atoms/StatusIndicator";
+import { Astronaut } from "../../types/Astronaut";
 
-const AstronautCard: FC<Astronaut> = ({
+const AstronautCard: FC<Astronaut & { seePictures: boolean }> = ({
   id,
   name,
   description,
   pseudo,
   imageUrl,
   mission,
+  seePictures,
 }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
@@ -37,9 +39,11 @@ const AstronautCard: FC<Astronaut> = ({
           boxShadow={"2xl"}
           padding={4}
         >
-          <Flex flex={1} maxHeight="100%" maxWidth={150}>
-            <Image objectFit="cover" boxSize="100%" src={imageUrl} />
-          </Flex>
+          {seePictures && (
+            <Flex flex={1} maxHeight="100%" maxWidth={150}>
+              <Image objectFit="cover" boxSize="100%" src={imageUrl} />
+            </Flex>
+          )}
           <Stack
             flex={1}
             flexDirection="column"
@@ -48,13 +52,16 @@ const AstronautCard: FC<Astronaut> = ({
             p={1}
             pt={2}
           >
-            <Heading fontSize={"2xl"} fontFamily={"body"}>
-              {name}
-            </Heading>
+            <Flex justifyContent="space-between" alignItems="center" w="100%">
+              <Heading fontSize={"2xl"} fontFamily={"body"}>
+                {name}
+              </Heading>
+            </Flex>
             <Text fontWeight={600} color={"gray.500"} size="sm" mb={4}>
               @{pseudo}
             </Text>
             <Text>{description}</Text>
+            <StatusIndicator isActive={!mission}></StatusIndicator>
             <Badge py={1} fontWeight={"400"} colorScheme="purple">
               #{mission ? mission.name : "Pas de mission affectée"}
             </Badge>

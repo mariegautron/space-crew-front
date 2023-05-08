@@ -6,17 +6,7 @@ import {
   UseQueryResult,
 } from "@tanstack/react-query";
 import { callApi } from "../utils";
-import { Mission } from "./mission";
-
-export type Astronaut = {
-  id: number;
-  name: string;
-  description: string;
-  pseudo: string;
-  imageUrl: string;
-  missionId: number;
-  mission: Mission;
-};
+import { Astronaut } from "../../../types/Astronaut";
 
 export type GetAstronautsResponse = {
   astronauts: Astronaut[];

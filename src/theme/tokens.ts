@@ -15,6 +15,7 @@ export const tokens = {
       "linear-gradient(111.84deg, rgba(6, 11, 38, 0.94) 59.3%, rgba(26, 31, 55, 0) 100%)",
   },
   spacing: {
+    xxs: "2px",
     xs: "4px",
     s: "8px",
     m: "12px",
@@ -24,6 +25,8 @@ export const tokens = {
     "3xl": "28px",
     "4xl": "32px",
     "5xl": "40px",
+    "6xl": "50px",
+    "7xl": "55px",
   },
   transition: {
     navbar: "0.2s linear",
