@@ -8,11 +8,16 @@ export const URL = "https://space-crew-api.onrender.com";
 export const callApi = async <T>(
   url: string,
   method = "GET",
-  config?: RequestInit
+  config?: RequestInit & { body?: BodyInit }
 ): Promise<ApiResponse<T>> => {
   const response = await fetch(`${import.meta.env.VITE_HOST || URL}${url}`, {
     ...config,
     method: method.toUpperCase(),
+    body: config?.body ? JSON.stringify(config.body) : undefined,
+    headers: {
+      ...(config?.headers ?? {}),
+      "Content-Type": "application/json",
+    },
   });
 
   if (response.ok) {

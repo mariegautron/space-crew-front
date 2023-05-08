@@ -1,6 +1,7 @@
 import { Box, Container, Heading, Stack, Text } from "@chakra-ui/react";
 import SpaceButton from "../atoms/SpaceButton";
 import { FC } from "react";
+import { RoutesPaths } from "../../constants/routes";
 
 const Hero: FC = () => {
   return (
@@ -36,7 +37,9 @@ const Hero: FC = () => {
             alignSelf={"center"}
             position={"relative"}
           >
-            <SpaceButton href="/astronauts">C'est parti !</SpaceButton>
+            <SpaceButton href={RoutesPaths.ASTRONAUTS}>
+              C'est parti !
+            </SpaceButton>
           </Stack>
         </Stack>
       </Container>

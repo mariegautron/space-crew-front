@@ -16,14 +16,17 @@ import ModalDeleteAstronaut from "./ModalDeleteAstronaut";
 import StatusIndicator from "../atoms/StatusIndicator";
 import { Astronaut } from "../../types/Astronaut";
 
-const AstronautCard: FC<Astronaut & { seePictures: boolean }> = ({
+const AstronautCard: FC<
+  Astronaut & { seePicture: boolean; preview?: boolean }
+> = ({
   id,
   name,
   description,
   pseudo,
   imageUrl,
   mission,
-  seePictures,
+  seePicture,
+  preview = false,
 }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
@@ -39,9 +42,11 @@ const AstronautCard: FC<Astronaut & { seePictures: boolean }> = ({
           boxShadow={"2xl"}
           padding={4}
         >
-          {seePictures && (
+          {seePicture && (
             <Flex flex={1} maxHeight="100%" maxWidth={150}>
-              <Image objectFit="cover" boxSize="100%" src={imageUrl} />
+              {imageUrl && (
+                <Image objectFit="cover" boxSize="100%" src={imageUrl} />
+              )}
             </Flex>
           )}
           <Stack
@@ -52,43 +57,51 @@ const AstronautCard: FC<Astronaut & { seePictures: boolean }> = ({
             p={1}
             pt={2}
           >
-            <Flex justifyContent="space-between" alignItems="center" w="100%">
-              <Heading fontSize={"2xl"} fontFamily={"body"}>
-                {name}
-              </Heading>
-            </Flex>
-            <Text fontWeight={600} color={"gray.500"} size="sm" mb={4}>
-              @{pseudo}
-            </Text>
-            <Text>{description}</Text>
+            {name && (
+              <Flex justifyContent="space-between" alignItems="center" w="100%">
+                <Heading fontSize={"2xl"} fontFamily={"body"}>
+                  {name}
+                </Heading>
+              </Flex>
+            )}
+            {pseudo && (
+              <Text fontWeight={600} color={"gray.500"} size="sm" mb={4}>
+                @{pseudo}
+              </Text>
+            )}
+            {description && <Text>{description}</Text>}
             <StatusIndicator isActive={!mission}></StatusIndicator>
             <Badge py={1} fontWeight={"400"} colorScheme="purple">
               #{mission ? mission.name : "Pas de mission affectée"}
             </Badge>
 
-            <Flex gap={tokens.spacing.s}>
-              <SpaceButton icon={<EditIcon />} size="sm" spaceButtonLeftIcon>
-                Modifier
-              </SpaceButton>
-              <SpaceButton
-                colorScheme="red"
-                icon={<DeleteIcon />}
-                size="sm"
-                onClick={onOpen}
-                spaceButtonLeftIcon
-              >
-                Suprimer
-              </SpaceButton>
-            </Flex>
+            {!preview && id && (
+              <Flex gap={tokens.spacing.s}>
+                <SpaceButton icon={<EditIcon />} size="sm" spaceButtonLeftIcon>
+                  Modifier
+                </SpaceButton>
+                <SpaceButton
+                  colorScheme="red"
+                  icon={<DeleteIcon />}
+                  size="sm"
+                  onClick={onOpen}
+                  spaceButtonLeftIcon
+                >
+                  Suprimer
+                </SpaceButton>
+              </Flex>
+            )}
           </Stack>
         </Stack>
       </Center>
-      <ModalDeleteAstronaut
-        isOpen={isOpen}
-        onClose={onClose}
-        astronautName={name}
-        astronautId={id}
-      />
+      {id && (
+        <ModalDeleteAstronaut
+          isOpen={isOpen}
+          onClose={onClose}
+          astronautName={name}
+          astronautId={id}
+        />
+      )}
     </>
   );
 };

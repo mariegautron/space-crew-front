@@ -3,6 +3,7 @@ import { CloseIcon, ExternalLinkIcon } from "@chakra-ui/icons";
 import { FC } from "react";
 import SpaceButton from "../atoms/SpaceButton";
 import { tokens } from "../../theme/tokens";
+import { RoutesPaths } from "../../constants/routes";
 
 const ErrorPage: FC = () => {
   return (
@@ -66,7 +67,7 @@ const ErrorPage: FC = () => {
           C'est tout ... et c'est déjà beaucoup. Sinon retourne sur la page
           d'accueil. (mais elle sert à rien)
         </Text>
-        <SpaceButton href="/" mt={tokens.spacing.xl}>
+        <SpaceButton href={RoutesPaths.HOME} mt={tokens.spacing.xl}>
           Page d'accueil
         </SpaceButton>
       </Box>
