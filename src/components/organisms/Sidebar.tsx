@@ -2,8 +2,8 @@ import { Box, Stack } from "@chakra-ui/react";
 import { FC, useMemo } from "react";
 import { Routes, RoutesPaths } from "../../constants/routes";
 import { tokens } from "../../theme/tokens";
-import Logo from "./Logo";
-import NavItem from "./NavItem";
+import Logo from "../atoms/Logo";
+import NavItem from "../molecules/NavItem";
 
 const Sidebar: FC = () => {
   const navLinks = useMemo(() => {

@@ -11,8 +11,8 @@ import { AiOutlineMenuUnfold } from "react-icons/ai";
 import { Box, Stack } from "@chakra-ui/react";
 import { useMemo } from "react";
 import { Routes, RoutesPaths } from "../../constants/routes";
-import Logo from "./Logo";
-import NavItem from "./NavItem";
+import Logo from "../atoms/Logo";
+import NavItem from "../molecules/NavItem";
 import { tokens } from "../../theme/tokens";
 
 const SideBarMobile: FC = () => {

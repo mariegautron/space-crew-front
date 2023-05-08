@@ -11,6 +11,7 @@ interface SpaceButtonProps extends ButtonProps {
   textColor?: string;
   icon?: ReactElement;
   ref?: RefObject<unknown>;
+  noIcon?: boolean;
 }
 
 const SpaceButton: FC<SpaceButtonProps> = ({
@@ -23,6 +24,7 @@ const SpaceButton: FC<SpaceButtonProps> = ({
   colorScheme,
   size,
   ref,
+  noIcon = false,
   ...props
 }: SpaceButtonProps) => {
   if (spaceButtonType === "secondary") {
@@ -35,7 +37,7 @@ const SpaceButton: FC<SpaceButtonProps> = ({
         alignItem="center"
         ref={ref}
       >
-        {spaceButtonLeftIcon && (
+        {!noIcon && spaceButtonLeftIcon && (
           <Icon
             as={icon ? (icon.type as React.ElementType) : ArrowBackIcon}
             w="20px"
@@ -59,7 +61,7 @@ const SpaceButton: FC<SpaceButtonProps> = ({
         >
           {children}
         </Text>
-        {!spaceButtonLeftIcon && (
+        {!noIcon && !spaceButtonLeftIcon && (
           <Icon
             as={icon ? (icon.type as React.ElementType) : ArrowForwardIcon}
             w="20px"
@@ -84,8 +86,10 @@ const SpaceButton: FC<SpaceButtonProps> = ({
       variant="solid"
       size={size || "lg"}
       colorScheme={colorScheme || "green"}
-      {...(spaceButtonLeftIcon && { leftIcon: icon || <ArrowBackIcon /> })}
-      {...(!spaceButtonLeftIcon && { rightIcon: icon || <ArrowForwardIcon /> })}
+      {...(!noIcon &&
+        spaceButtonLeftIcon && { leftIcon: icon || <ArrowBackIcon /> })}
+      {...(!noIcon &&
+        !spaceButtonLeftIcon && { rightIcon: icon || <ArrowForwardIcon /> })}
       color={textColor || "blackAlpha.800"}
       {...(!colorScheme && {
         backgroundColor: "green.300",
