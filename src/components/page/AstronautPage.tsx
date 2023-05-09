@@ -7,6 +7,7 @@ import SpaceButton from "../atoms/SpaceButton";
 import AstronautCard from "../molecules/AstronautCard";
 import Pagination from "../organisms/Pagination";
 import { Astronaut } from "../../types/Astronaut";
+import { RoutesPaths } from "../../constants/routes";
 
 interface AstronautsPageProps {
   setSeePictures: (seePictures: boolean) => void;
@@ -32,8 +33,12 @@ const AstronautsPage: FC<AstronautsPageProps> = ({
         alignItems="center"
         mb={tokens.spacing.l}
       >
-        <Heading>Tous les astronautes</Heading>
-        <SpaceButton icon={<PlusSquareIcon />} spaceButtonLeftIcon>
+        <Heading as="h1">Tous les astronautes</Heading>
+        <SpaceButton
+          icon={<PlusSquareIcon />}
+          href={RoutesPaths.ADD_ASTRONAUT}
+          spaceButtonLeftIcon
+        >
           Ajouter un astronaute
         </SpaceButton>
       </Flex>
@@ -49,7 +54,7 @@ const AstronautsPage: FC<AstronautsPageProps> = ({
       <SimpleGrid minChildWidth="450px" spacing={tokens.spacing.xs}>
         {astronauts?.map((astronaut) => (
           <Box key={astronaut.id}>
-            <AstronautCard {...astronaut} seePictures={seePictures} />
+            <AstronautCard {...astronaut} seePicture={seePictures} />
           </Box>
         ))}
       </SimpleGrid>

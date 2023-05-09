@@ -86,16 +86,22 @@ Les fichiers de production seront générés dans le dossier dist.
 Le projet suit une structure de dossier basée sur **[Atomic Design](https://atomicdesign.bradfrost.com/chapter-2/)** pour organiser les composants. Les dossiers sont organisés comme suit :
 
 - **theme** : ce dossier contient les fichiers pour la personnalisation du thème Chakra UI, tels que les variables dans les fichiers "tokens" et les styles globaux dans les fichiers "global".
-- **pages** : ce dossier contient les pages principales de l'application. Chaque page est un composant React qui peut contenir d'autres composants.
 - **hooks** : ce dossier contient les hooks personnalisés de l'application, tels que les hooks pour la gestion de formulaires, la gestion de l'état global, la gestion de l'authentification, etc.
 - **contexts** : ce dossier contient les contextes de l'application, tels que le contexte d'API, qui fournit les services pour faire les appels d'API. Il peut également contenir des services pour d'autres fonctionnalités globales de l'application.
-- **constants** : ce dossier contient les constantes ou enum de l'application
-- **components** : ce dossier contient les composants réutilisables de l'application organisés en Atomic Design (au plus proche de la méthode).
-    - atoms : les éléments de base tels que les boutons, les champs de saisie, etc.
-    - molecules : des groupes d'atomes qui forment un élément plus complexe tel qu'un formulaire.
-    - organisms : des groupes de molécules et d'atomes qui forment des parties autonomes de l'interface utilisateur
-    - layout: tous les composants relatif au layout
+- **constants** : ce dossier contient les constantes ou enum de l'application.
+- **components** : ce dossier contient les composants réutilisables de l'application organisés en Atomic Design. Les composants sont divisés en quatre catégories selon leur complexité et leur niveau d'abstraction :
+    - **atoms** : les éléments de base tels que les boutons, les champs de saisie, etc.
+    - **molecules** : des groupes d'atomes qui forment un élément plus complexe tel qu'un formulaire.
+    - **organisms** : des groupes de molécules et d'atomes qui forment des parties autonomes de l'interface utilisateur.
+    - **templates** : des modèles de mise en page génériques qui contiennent des composants d'organismes pour construire des pages.
+    - **pages** : ce dossier contient les pages principales de l'application. Chaque page est un composant React qui peut contenir d'autres composants.
+- **pages** : ce dossier contient les composants de page qui sont directement liés aux routes et aux URL.
+    types : ce dossier contient les fichiers de types TypeScript pour l'application.
 
+Lorsque des logiques doivent être séparées des présentations, il est recommandé de créer un dossier pour les composants qui contiendra deux fichiers :
+
+- Un fichier `index.tsx` pour la logique
+- Un fichier `Component.tsx` pour la présentation.
 
 
 ## Roadmap

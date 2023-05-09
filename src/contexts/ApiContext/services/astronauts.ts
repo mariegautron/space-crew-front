@@ -6,7 +6,8 @@ import {
   UseQueryResult,
 } from "@tanstack/react-query";
 import { callApi } from "../utils";
-import { Astronaut } from "../../../types/Astronaut";
+import { AddAstronautBody, Astronaut } from "../../../types/Astronaut";
+import { useToast } from "@chakra-ui/react";
 
 export type GetAstronautsResponse = {
   astronauts: Astronaut[];
@@ -30,6 +31,7 @@ export const useDeleteAstronaut = (): UseMutationResult<
   string
 > => {
   const queryClient = useQueryClient();
+  const toast = useToast();
 
   return useMutation(
     async (astronautId) => {
@@ -38,8 +40,65 @@ export const useDeleteAstronaut = (): UseMutationResult<
     },
     {
       onSuccess: () => {
-        // Invalidate and refetch
         queryClient.invalidateQueries(["astronauts"]);
+        toast({
+          title: "Astronaute supprimé.",
+          status: "success",
+          duration: 9000,
+          isClosable: true,
+        });
+      },
+      onError: (error) => {
+        console.log("Erreur: ", error);
+        toast({
+          title: "Erreur lors de la suppression.",
+          description:
+            "Une erreur est survenue lors de la suppression de l'astronaute.",
+          status: "error",
+          duration: 9000,
+          isClosable: true,
+        });
+      },
+    }
+  );
+};
+
+export const useAddAstronaut = (): UseMutationResult<
+  Astronaut | null,
+  unknown,
+  AddAstronautBody,
+  unknown
+> => {
+  const queryClient = useQueryClient();
+  const toast = useToast();
+
+  return useMutation(
+    async (newAstronaut: AddAstronautBody) => {
+      const { data } = await callApi<Astronaut>("/astronauts", "POST", {
+        body: JSON.stringify(newAstronaut),
+      });
+      return data;
+    },
+    {
+      onSuccess: () => {
+        queryClient.invalidateQueries(["astronauts"]);
+        toast({
+          title: "Astronaute ajouté.",
+          status: "success",
+          duration: 9000,
+          isClosable: true,
+        });
+      },
+      onError: (error) => {
+        console.log("Erreur: ", error);
+        toast({
+          title: "Erreur lors de l'ajout.",
+          description:
+            "Une erreur est survenue lors de l'ajout de l'astronaute.",
+          status: "error",
+          duration: 9000,
+          isClosable: true,
+        });
       },
     }
   );
