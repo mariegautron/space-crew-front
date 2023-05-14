@@ -12,17 +12,20 @@ import {
 import { FC, useState } from "react";
 import AstronautCard from "../molecules/AstronautCard";
 import { AddAstronautBody, Astronaut } from "../../types/Astronaut";
+import SpaceButton from "../atoms/SpaceButton";
 
 const AddAstronautForm: FC<{
   addAstronaut: (astronaut: AddAstronautBody) => void;
-}> = ({ addAstronaut }) => {
+  isLoading: boolean;
+}> = ({ addAstronaut, isLoading }) => {
   const [errors, setErrors] = useState<Partial<Astronaut>>({});
 
   const [formState, setFormState] = useState<Astronaut>({
     name: "",
     description: "",
     pseudo: "",
-    imageUrl: "",
+    imageUrl:
+      "https://www.slate.fr/sites/default/files/styles/1060x523/public/moon-landing-60582_1280.jpg",
     missionId: null,
   });
 
@@ -113,11 +116,13 @@ const AddAstronautForm: FC<{
               <FormErrorMessage>{errors.imageUrl}</FormErrorMessage>
             </FormControl>
 
-            <Button type="submit">Ajouter</Button>
+            <SpaceButton type="submit" isLoading={isLoading} noIcon>
+              Ajouter mon astronaute
+            </SpaceButton>
           </VStack>
         </form>
       </Box>
-      <Box>
+      <Box mt={12}>
         <Heading as="h2" size="md">
           Prévisualisez votre astronaute :{" "}
         </Heading>
