@@ -1,13 +1,13 @@
-import { RefObject, useRef } from "react";
-import { useApi } from "../../../contexts/ApiContext";
-import ModalDelete from "./ModalDelete";
+import { type RefObject, useRef } from 'react';
+import { useApi } from '../../../contexts/ApiContext';
+import ModalDelete from './ModalDelete';
 
-type ModalDeleteAstronautProps = {
+interface ModalDeleteAstronautProps {
   isOpen: boolean;
   onClose: () => void;
   astronautName: string;
   astronautId: number;
-};
+}
 
 const ModalDeleteAstronaut = ({
   onClose,

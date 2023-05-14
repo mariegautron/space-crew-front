@@ -1,6 +1,6 @@
-import { Mission } from "./Mission";
+import { type Mission } from './Mission';
 
-export type Astronaut = {
+export interface Astronaut {
   id?: number;
   name: string;
   description?: string;
@@ -8,8 +8,8 @@ export type Astronaut = {
   imageUrl: string;
   missionId?: number | null;
   mission?: Mission | null;
-};
+}
 
-export type AddAstronautBody = {
+export interface AddAstronautBody {
   astronaut: Astronaut;
-};
+}

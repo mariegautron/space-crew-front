@@ -1,25 +1,28 @@
 import {
   useMutation,
-  UseMutationResult,
+  type UseMutationResult,
   useQuery,
   useQueryClient,
-  UseQueryResult,
-} from "@tanstack/react-query";
-import { callApi } from "../utils";
-import { AddAstronautBody, Astronaut } from "../../../types/Astronaut";
-import { useToast } from "@chakra-ui/react";
+  type UseQueryResult,
+} from '@tanstack/react-query';
+import { callApi } from '../utils';
+import {
+  type AddAstronautBody,
+  type Astronaut,
+} from '../../../types/Astronaut';
+import { useToast } from '@chakra-ui/react';
 
-export type GetAstronautsResponse = {
+export interface GetAstronautsResponse {
   astronauts: Astronaut[];
   totalCount: number;
   totalPages: number;
-};
+}
 
 export const useGetAstronauts = (
   page = 1,
   limit = 10
 ): UseQueryResult<GetAstronautsResponse, unknown> => {
-  return useQuery(["astronauts", page, limit], async () => {
+  return useQuery(['astronauts', page, limit], async () => {
     const { data } = await callApi(`/astronauts?page=${page}&limit=${limit}`);
     return data;
   });
@@ -35,26 +38,26 @@ export const useDeleteAstronaut = (): UseMutationResult<
 
   return useMutation(
     async (astronautId) => {
-      await callApi(`/astronauts/${astronautId}`, "DELETE");
+      await callApi(`/astronauts/${astronautId}`, 'DELETE');
       return null;
     },
     {
       onSuccess: () => {
-        queryClient.invalidateQueries(["astronauts"]);
+        queryClient.invalidateQueries(['astronauts']);
         toast({
-          title: "Astronaute supprimé.",
-          status: "success",
+          title: 'Astronaute supprimé.',
+          status: 'success',
           duration: 9000,
           isClosable: true,
         });
       },
       onError: (error) => {
-        console.log("Erreur: ", error);
+        console.log('Erreur: ', error);
         toast({
-          title: "Erreur lors de la suppression.",
+          title: 'Erreur lors de la suppression.',
           description:
             "Une erreur est survenue lors de la suppression de l'astronaute.",
-          status: "error",
+          status: 'error',
           duration: 9000,
           isClosable: true,
         });
@@ -74,28 +77,28 @@ export const useAddAstronaut = (): UseMutationResult<
 
   return useMutation(
     async (newAstronaut: AddAstronautBody) => {
-      const { data } = await callApi<Astronaut>("/astronauts", "POST", {
+      const { data } = await callApi<Astronaut>('/astronauts', 'POST', {
         body: JSON.stringify(newAstronaut),
       });
       return data;
     },
     {
       onSuccess: () => {
-        queryClient.invalidateQueries(["astronauts"]);
+        queryClient.invalidateQueries(['astronauts']);
         toast({
-          title: "Astronaute ajouté.",
-          status: "success",
+          title: 'Astronaute ajouté.',
+          status: 'success',
           duration: 9000,
           isClosable: true,
         });
       },
       onError: (error) => {
-        console.log("Erreur: ", error);
+        console.log('Erreur: ', error);
         toast({
           title: "Erreur lors de l'ajout.",
           description:
             "Une erreur est survenue lors de l'ajout de l'astronaute.",
-          status: "error",
+          status: 'error',
           duration: 9000,
           isClosable: true,
         });

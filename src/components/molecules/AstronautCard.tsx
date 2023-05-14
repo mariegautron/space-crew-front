@@ -1,4 +1,4 @@
-import { DeleteIcon, EditIcon } from "@chakra-ui/icons";
+import { DeleteIcon, EditIcon } from '@chakra-ui/icons';
 import {
   Badge,
   Center,
@@ -8,13 +8,13 @@ import {
   Stack,
   Text,
   useDisclosure,
-} from "@chakra-ui/react";
-import { FC } from "react";
-import { tokens } from "../../theme/tokens";
-import SpaceButton from "../atoms/SpaceButton";
-import ModalDeleteAstronaut from "./ModalDeleteAstronaut";
-import StatusIndicator from "../atoms/StatusIndicator";
-import { Astronaut } from "../../types/Astronaut";
+} from '@chakra-ui/react';
+import { type FC } from 'react';
+import { tokens } from '../../theme/tokens';
+import SpaceButton from '../atoms/SpaceButton';
+import ModalDeleteAstronaut from './ModalDeleteAstronaut';
+import StatusIndicator from '../atoms/StatusIndicator';
+import { type Astronaut } from '../../types/Astronaut';
 
 const AstronautCard: FC<
   Astronaut & { seePicture: boolean; preview?: boolean }
@@ -36,10 +36,10 @@ const AstronautCard: FC<
         <Stack
           borderWidth="1px"
           borderRadius="lg"
-          w={{ sm: "100%", md: "100%" }}
-          height={{ sm: "100%", md: "100%" }}
-          direction={{ base: "column", md: "row" }}
-          boxShadow={"2xl"}
+          w={{ sm: '100%', md: '100%' }}
+          height={{ sm: '100%', md: '100%' }}
+          direction={{ base: 'column', md: 'row' }}
+          boxShadow={'2xl'}
           padding={4}
         >
           {seePicture && (
@@ -64,20 +64,20 @@ const AstronautCard: FC<
           >
             {name && (
               <Flex justifyContent="space-between" alignItems="center" w="100%">
-                <Heading fontSize={"2xl"} fontFamily={"body"}>
+                <Heading fontSize={'2xl'} fontFamily={'body'}>
                   {name}
                 </Heading>
               </Flex>
             )}
             {pseudo && (
-              <Text fontWeight={600} color={"gray.500"} size="sm" mb={4}>
+              <Text fontWeight={600} color={'gray.500'} size="sm" mb={4}>
                 @{pseudo}
               </Text>
             )}
             {description && <Text>{description}</Text>}
-            <StatusIndicator isActive={!mission}></StatusIndicator>
-            <Badge py={1} fontWeight={"400"} colorScheme="purple">
-              #{mission ? mission.name : "Pas de mission affectée"}
+            <StatusIndicator isActive={mission == null}></StatusIndicator>
+            <Badge py={1} fontWeight={'400'} colorScheme="purple">
+              #{mission != null ? mission.name : 'Pas de mission affectée'}
             </Badge>
 
             {!preview && id && (

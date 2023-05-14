@@ -1,13 +1,13 @@
-import { Box, Code, Flex, Heading, Link, Text } from "@chakra-ui/react";
-import { CloseIcon, ExternalLinkIcon } from "@chakra-ui/icons";
-import { FC } from "react";
-import SpaceButton from "../atoms/SpaceButton";
-import { tokens } from "../../theme/tokens";
-import { RoutesPaths } from "../../constants/routes";
+import { Box, Code, Flex, Heading, Link, Text } from '@chakra-ui/react';
+import { CloseIcon, ExternalLinkIcon } from '@chakra-ui/icons';
+import { type FC } from 'react';
+import SpaceButton from '../atoms/SpaceButton';
+import { tokens } from '../../theme/tokens';
+import { RoutesPaths } from '../../constants/routes';
 
 const ErrorPage: FC = () => {
   return (
-    <Flex h="100vh" justifyContent={"center"} alignItems={"center"}>
+    <Flex h="100vh" justifyContent={'center'} alignItems={'center'}>
       <Box
         textAlign="center"
         py={tokens.spacing.xxl}
@@ -24,9 +24,9 @@ const ErrorPage: FC = () => {
             justifyContent="center"
             alignItems="center"
             bg="red.200"
-            rounded={tokens.spacing["6xl"]}
-            w={tokens.spacing["7xl"]}
-            h={tokens.spacing["7xl"]}
+            rounded={tokens.spacing['6xl']}
+            w={tokens.spacing['7xl']}
+            h={tokens.spacing['7xl']}
             textAlign="center"
           >
             <CloseIcon boxSize={tokens.spacing.xl} />
@@ -36,7 +36,7 @@ const ErrorPage: FC = () => {
           Il y a eu une erreur 👀
         </Heading>
         <Text mt={tokens.spacing.xl}>
-          Vérifie que{" "}
+          Vérifie que{' '}
           <Link
             href="https://github.com/mariegautron/space-crew-api"
             isExternal

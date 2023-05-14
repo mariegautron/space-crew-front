@@ -1,6 +1,6 @@
-import { Box, Flex, keyframes, Text, Tooltip } from "@chakra-ui/react";
-import { FC } from "react";
-import { tokens } from "../../theme/tokens";
+import { Box, Flex, keyframes, Text, Tooltip } from '@chakra-ui/react';
+import { type FC } from 'react';
+import { tokens } from '../../theme/tokens';
 
 const StatusIndicator: FC<{ isActive: boolean }> = ({ isActive }) => {
   const ringScaleMin = 0.33;
@@ -42,7 +42,7 @@ const StatusIndicator: FC<{ isActive: boolean }> = ({ isActive }) => {
       <Flex alignItems="center" gap="10px">
         <Text>Disponible</Text>
         <Tooltip
-          label={`Disponible pour une mission spatiale`}
+          label={'Disponible pour une mission spatiale'}
           textTransform="capitalize"
         >
           <Box
@@ -50,19 +50,19 @@ const StatusIndicator: FC<{ isActive: boolean }> = ({ isActive }) => {
             h={tokens.spacing.m}
             w={tokens.spacing.m}
             position="relative"
-            bgColor={"green.300"}
+            bgColor={'green.300'}
             borderRadius="50%"
             _before={{
               content: "''",
-              position: "relative",
-              display: "block",
-              width: "300%",
-              height: "300%",
-              boxSizing: "border-box",
-              marginLeft: "-100%",
-              marginTop: "-100%",
-              borderRadius: "50%",
-              bgColor: "green.300",
+              position: 'relative',
+              display: 'block',
+              width: '300%',
+              height: '300%',
+              boxSizing: 'border-box',
+              marginLeft: '-100%',
+              marginTop: '-100%',
+              borderRadius: '50%',
+              bgColor: 'green.300',
               animation: `2.25s ${pulseRing} cubic-bezier(0.455, 0.03, 0.515, 0.955) -0.4s infinite`,
             }}
             _after={{
@@ -77,13 +77,13 @@ const StatusIndicator: FC<{ isActive: boolean }> = ({ isActive }) => {
   return (
     <Flex alignItems="center" gap="10px">
       <Text>En mission</Text>
-      <Tooltip label={`Déjà en mission !`} textTransform="capitalize">
+      <Tooltip label={'Déjà en mission !'} textTransform="capitalize">
         <Box
           as="div"
           h={tokens.spacing.m}
           w={tokens.spacing.m}
           position="relative"
-          bgColor={"gray.300"}
+          bgColor={'gray.300'}
           borderRadius="50%"
         />
       </Tooltip>

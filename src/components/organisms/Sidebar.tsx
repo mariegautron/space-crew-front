@@ -1,9 +1,9 @@
-import { Box, Stack } from "@chakra-ui/react";
-import { FC, useMemo } from "react";
-import { Routes, RoutesPaths } from "../../constants/routes";
-import { tokens } from "../../theme/tokens";
-import Logo from "../atoms/Logo";
-import NavItem from "../molecules/NavItem";
+import { Box, Stack } from '@chakra-ui/react';
+import { type FC, useMemo } from 'react';
+import { Routes, RoutesPaths } from '../../constants/routes';
+import { tokens } from '../../theme/tokens';
+import Logo from '../atoms/Logo';
+import NavItem from '../molecules/NavItem';
 
 const Sidebar: FC = () => {
   const navLinks = useMemo(() => {
@@ -17,7 +17,7 @@ const Sidebar: FC = () => {
 
   return (
     <Box>
-      <Box display={{ sm: "none", xl: "block" }} position="fixed">
+      <Box display={{ sm: 'none', xl: 'block' }} position="fixed">
         <Box
           bg={tokens.gradients.sidebar}
           backdropFilter="blur(10px)"

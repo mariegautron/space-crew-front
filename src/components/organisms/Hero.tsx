@@ -1,26 +1,26 @@
-import { Box, Container, Heading, Stack, Text } from "@chakra-ui/react";
-import SpaceButton from "../atoms/SpaceButton";
-import { FC } from "react";
-import { RoutesPaths } from "../../constants/routes";
+import { Box, Container, Heading, Stack, Text } from '@chakra-ui/react';
+import SpaceButton from '../atoms/SpaceButton';
+import { type FC } from 'react';
+import { RoutesPaths } from '../../constants/routes';
 
 const Hero: FC = () => {
   return (
     <>
-      <Container maxW={"3xl"}>
+      <Container maxW={'3xl'}>
         <Stack
           as={Box}
-          textAlign={"center"}
+          textAlign={'center'}
           spacing={{ base: 8, md: 14 }}
           py={{ base: 20, md: 36 }}
         >
           <Heading
             fontWeight={600}
-            fontSize={{ base: "2xl", sm: "4xl", md: "6xl" }}
-            lineHeight={"110%"}
+            fontSize={{ base: '2xl', sm: '4xl', md: '6xl' }}
+            lineHeight={'110%'}
           >
             Prêt à embarquer pour
             <br />
-            <Text as={"span"} color={"green.300"}>
+            <Text as={'span'} color={'green.300'}>
               une aventure spatiale ?
             </Text>
           </Heading>
@@ -31,11 +31,11 @@ const Hero: FC = () => {
             pas).
           </Text>
           <Stack
-            direction={"column"}
+            direction={'column'}
             spacing={3}
-            align={"center"}
-            alignSelf={"center"}
-            position={"relative"}
+            align={'center'}
+            alignSelf={'center'}
+            position={'relative'}
           >
             <SpaceButton href={RoutesPaths.ASTRONAUTS}>
               C'est parti !

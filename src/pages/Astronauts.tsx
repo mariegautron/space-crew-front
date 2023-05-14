@@ -1,8 +1,8 @@
-import { FC, useState } from "react";
-import AstronautsPage from "../components/page/AstronautPage";
-import ErrorPage from "../components/page/ErrorPage";
-import LoadingPage from "../components/page/LoadingPage";
-import { useApi } from "../contexts/ApiContext";
+import { type FC, useState } from 'react';
+import AstronautsPage from '../components/page/AstronautPage';
+import ErrorPage from '../components/page/ErrorPage';
+import LoadingPage from '../components/page/LoadingPage';
+import { useApi } from '../contexts/ApiContext';
 
 const Astronauts: FC = () => {
   const { astronautService } = useApi();
@@ -24,7 +24,7 @@ const Astronauts: FC = () => {
     return <LoadingPage />;
   }
 
-  if (!data || error) {
+  if (!data || Boolean(error)) {
     return <ErrorPage />;
   }
 

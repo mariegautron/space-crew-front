@@ -1,6 +1,5 @@
 import {
   Box,
-  Button,
   FormControl,
   FormErrorMessage,
   FormLabel,
@@ -8,11 +7,11 @@ import {
   Input,
   Textarea,
   VStack,
-} from "@chakra-ui/react";
-import { FC, useState } from "react";
-import AstronautCard from "../molecules/AstronautCard";
-import { AddAstronautBody, Astronaut } from "../../types/Astronaut";
-import SpaceButton from "../atoms/SpaceButton";
+} from '@chakra-ui/react';
+import { type FC, useState } from 'react';
+import { type AddAstronautBody, type Astronaut } from '../../types/Astronaut';
+import SpaceButton from '../atoms/SpaceButton';
+import AstronautCard from '../molecules/AstronautCard';
 
 const AddAstronautForm: FC<{
   addAstronaut: (astronaut: AddAstronautBody) => void;
@@ -21,11 +20,11 @@ const AddAstronautForm: FC<{
   const [errors, setErrors] = useState<Partial<Astronaut>>({});
 
   const [formState, setFormState] = useState<Astronaut>({
-    name: "",
-    description: "",
-    pseudo: "",
+    name: '',
+    description: '',
+    pseudo: '',
     imageUrl:
-      "https://www.slate.fr/sites/default/files/styles/1060x523/public/moon-landing-60582_1280.jpg",
+      'https://www.slate.fr/sites/default/files/styles/1060x523/public/moon-landing-60582_1280.jpg',
     missionId: null,
   });
 
@@ -52,7 +51,7 @@ const AddAstronautForm: FC<{
     const errors: Partial<Astronaut> = {};
 
     if (!values.name.trim()) {
-      errors.name = "Le nom est requis";
+      errors.name = 'Le nom est requis';
     }
 
     if (!values.imageUrl.trim()) {
@@ -124,7 +123,7 @@ const AddAstronautForm: FC<{
       </Box>
       <Box mt={12}>
         <Heading as="h2" size="md">
-          Prévisualisez votre astronaute :{" "}
+          Prévisualisez votre astronaute :{' '}
         </Heading>
         <AstronautCard {...formState} seePicture={true} preview />
       </Box>
