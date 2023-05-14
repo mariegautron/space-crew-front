@@ -1,4 +1,4 @@
-import { DeleteIcon } from "@chakra-ui/icons";
+import { DeleteIcon } from '@chakra-ui/icons';
 import {
   AlertDialog,
   AlertDialogBody,
@@ -7,11 +7,11 @@ import {
   AlertDialogHeader,
   AlertDialogOverlay,
   Flex,
-} from "@chakra-ui/react";
-import { RefObject } from "react";
-import { tokens } from "../../../theme/tokens";
-import GradientBorder from "../../atoms/GradientBackground";
-import SpaceButton from "../../atoms/SpaceButton";
+} from '@chakra-ui/react';
+import { type RefObject } from 'react';
+import { tokens } from '../../../theme/tokens';
+import GradientBorder from '../../atoms/GradientBackground';
+import SpaceButton from '../../atoms/SpaceButton';
 
 interface ModalDeleteProps {
   isOpen: boolean;
@@ -46,7 +46,7 @@ const ModalDelete = ({
             Supprimer {astronautName}
           </AlertDialogHeader>
 
-          <AlertDialogBody textAlign={"center"}>
+          <AlertDialogBody textAlign={'center'}>
             {astronautName} n'a que 68 ans, iel n'a pas encore l'âge de prendre
             sa retraite. Mais si tu le/la supprimes, iel pourra enfin profiter
             de sa nouvelle activité à temps plein : garder ses petits enfants !

@@ -1,5 +1,5 @@
-import { Flex } from "@chakra-ui/react";
-import { FC, ReactNode } from "react";
+import { Flex } from '@chakra-ui/react';
+import { type FC, type ReactNode } from 'react';
 
 const GradientBackground: FC<{ children: ReactNode }> = ({
   children,
@@ -13,7 +13,7 @@ const GradientBackground: FC<{ children: ReactNode }> = ({
       direction="column"
       borderRadius={10}
       bg="linear-gradient(159.02deg, #0F123B 14.25%, #090D2E 56.45%, #020515 86.14%)"
-      border={"1px solid white"}
+      border={'1px solid white'}
       {...props}
     >
       {children}

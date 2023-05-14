@@ -1,5 +1,5 @@
-import React, { ReactNode } from "react";
-import services, { Services } from "./services";
+import React, { type ReactNode } from 'react';
+import services, { type Services } from './services';
 
 const ApiContext = React.createContext<Services>(services);
 

@@ -1,9 +1,9 @@
-import * as astronautService from "./astronauts";
+import * as astronautService from './astronauts';
 
 export default {
   astronautService,
 };
 
-export type Services = {
+export interface Services {
   astronautService: typeof astronautService;
-};
+}

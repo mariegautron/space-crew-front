@@ -1,8 +1,8 @@
-import { createBrowserRouter } from "react-router-dom";
-import Home from "./pages/Home";
-import { RoutesPaths } from "./constants/routes";
-import Astronauts from "./pages/Astronauts";
-import AddAstronaut from "./pages/AddAstronaut";
+import { createBrowserRouter } from 'react-router-dom';
+import Home from './pages/Home';
+import { RoutesPaths } from './constants/routes';
+import Astronauts from './pages/Astronauts';
+import AddAstronaut from './pages/AddAstronaut';
 
 export const router = createBrowserRouter([
   {

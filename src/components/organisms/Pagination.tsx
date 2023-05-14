@@ -1,12 +1,12 @@
-import { Box, Flex } from "@chakra-ui/react";
-import { FC } from "react";
-import SpaceButton from "../atoms/SpaceButton";
+import { Box, Flex } from '@chakra-ui/react';
+import { type FC } from 'react';
+import SpaceButton from '../atoms/SpaceButton';
 
-type Props = {
+interface Props {
   currentPage: number;
   totalPages: number;
   onPageChange: (pageNumber: number) => void;
-};
+}
 
 const Pagination: FC<Props> = ({ currentPage, totalPages, onPageChange }) => {
   const isPreviousDisabled = currentPage === 1;

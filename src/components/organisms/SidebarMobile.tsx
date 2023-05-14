@@ -4,16 +4,16 @@ import {
   DrawerContent,
   DrawerOverlay,
   useDisclosure,
-} from "@chakra-ui/react";
-import { FC } from "react";
-import { AiOutlineMenuUnfold } from "react-icons/ai";
+  Box,
+  Stack,
+} from '@chakra-ui/react';
+import { type FC, useMemo } from 'react';
+import { AiOutlineMenuUnfold } from 'react-icons/ai';
 
-import { Box, Stack } from "@chakra-ui/react";
-import { useMemo } from "react";
-import { Routes, RoutesPaths } from "../../constants/routes";
-import Logo from "../atoms/Logo";
-import NavItem from "../molecules/NavItem";
-import { tokens } from "../../theme/tokens";
+import { Routes, RoutesPaths } from '../../constants/routes';
+import Logo from '../atoms/Logo';
+import NavItem from '../molecules/NavItem';
+import { tokens } from '../../theme/tokens';
 
 const SideBarMobile: FC = () => {
   const navLinks = useMemo(() => {

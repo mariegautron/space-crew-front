@@ -1,11 +1,16 @@
-import { ArrowBackIcon, ArrowForwardIcon, Icon } from "@chakra-ui/icons";
-import { Button, ButtonProps, Text } from "@chakra-ui/react";
-import { FC, ReactElement, ReactNode, RefObject } from "react";
-import { Link } from "react-router-dom";
+import { ArrowBackIcon, ArrowForwardIcon, Icon } from '@chakra-ui/icons';
+import { Button, type ButtonProps, Text } from '@chakra-ui/react';
+import {
+  type FC,
+  type ReactElement,
+  type ReactNode,
+  type RefObject,
+} from 'react';
+import { Link } from 'react-router-dom';
 
 interface SpaceButtonProps extends ButtonProps {
   children: ReactNode;
-  spaceButtonType?: "primary" | "secondary";
+  spaceButtonType?: 'primary' | 'secondary';
   href?: string;
   spaceButtonLeftIcon?: boolean;
   textColor?: string;
@@ -16,7 +21,7 @@ interface SpaceButtonProps extends ButtonProps {
 
 const SpaceButton: FC<SpaceButtonProps> = ({
   children,
-  spaceButtonType = "primary",
+  spaceButtonType = 'primary',
   href,
   spaceButtonLeftIcon,
   textColor,
@@ -27,52 +32,54 @@ const SpaceButton: FC<SpaceButtonProps> = ({
   noIcon = false,
   ...props
 }: SpaceButtonProps) => {
-  if (spaceButtonType === "secondary") {
+  if (spaceButtonType === 'secondary') {
     return (
       <Button
         {...(href && { as: Link, to: href })}
         {...props}
-        my={{ sm: "1.5rem", lg: "0px" }}
+        my={{ sm: '1.5rem', lg: '0px' }}
         display="flex"
         alignItem="center"
         ref={ref}
       >
         {!noIcon && spaceButtonLeftIcon && (
           <Icon
-            as={icon ? (icon.type as React.ElementType) : ArrowBackIcon}
+            as={icon != null ? (icon.type as React.ElementType) : ArrowBackIcon}
             w="20px"
             h="20px"
-            color={textColor || "#fff"}
+            color={textColor || '#fff'}
             fontSize="2xl"
             transition="all .3s ease"
             mx=".3rem"
             cursor="pointer"
             pt="4px"
-            _hover={{ transform: "translateX(20%)" }}
+            _hover={{ transform: 'translateX(20%)' }}
           />
         )}
         <Text
           fontSize="sm"
-          color={textColor || "#fff"}
+          color={textColor || '#fff'}
           fontWeight="bold"
           cursor="pointer"
           transition="all .3s ease"
-          _hover={{ me: "4px" }}
+          _hover={{ me: '4px' }}
         >
           {children}
         </Text>
         {!noIcon && !spaceButtonLeftIcon && (
           <Icon
-            as={icon ? (icon.type as React.ElementType) : ArrowForwardIcon}
+            as={
+              icon != null ? (icon.type as React.ElementType) : ArrowForwardIcon
+            }
             w="20px"
             h="20px"
-            color={textColor || "#fff"}
+            color={textColor || '#fff'}
             fontSize="2xl"
             transition="all .3s ease"
             mx=".3rem"
             cursor="pointer"
             pt="4px"
-            _hover={{ transform: "translateX(20%)" }}
+            _hover={{ transform: 'translateX(20%)' }}
           />
         )}
       </Button>
@@ -84,16 +91,18 @@ const SpaceButton: FC<SpaceButtonProps> = ({
       {...props}
       ref={ref}
       variant="solid"
-      size={size || "lg"}
-      colorScheme={colorScheme || "green"}
+      size={size || 'lg'}
+      colorScheme={colorScheme || 'green'}
       {...(!noIcon &&
-        spaceButtonLeftIcon && { leftIcon: icon || <ArrowBackIcon /> })}
+        spaceButtonLeftIcon && { leftIcon: icon != null || <ArrowBackIcon /> })}
       {...(!noIcon &&
-        !spaceButtonLeftIcon && { rightIcon: icon || <ArrowForwardIcon /> })}
-      color={textColor || "blackAlpha.800"}
+        !spaceButtonLeftIcon && {
+          rightIcon: icon != null || <ArrowForwardIcon />,
+        })}
+      color={textColor || 'blackAlpha.800'}
       {...(!colorScheme && {
-        backgroundColor: "green.300",
-        bgGradient: "linear(to right, green.300,cyan.300)",
+        backgroundColor: 'green.300',
+        bgGradient: 'linear(to right, green.300,cyan.300)',
       })}
       borderRadius={10}
       p={5}

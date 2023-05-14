@@ -1,4 +1,4 @@
-export type Mission = {
+export interface Mission {
   id: number;
   name: string;
-};
+}

@@ -1,7 +1,7 @@
-import { Box, Flex, Link, Text } from "@chakra-ui/react";
-import { FC } from "react";
-import { NavLink } from "react-router-dom";
-import { tokens } from "../../theme/tokens";
+import { Box, Flex, Link, Text } from '@chakra-ui/react';
+import { type FC } from 'react';
+import { NavLink } from 'react-router-dom';
+import { tokens } from '../../theme/tokens';
 
 const Logo: FC = () => {
   return (
