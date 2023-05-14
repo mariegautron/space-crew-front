@@ -19,7 +19,7 @@ const ModalDeleteAstronaut = ({
 
   const { astronautService } = useApi();
 
-  const { mutate } = astronautService.useDeleteAstronaut();
+  const { mutate, isLoading } = astronautService.useDeleteAstronaut();
 
   const deleteAstronaut = () => {
     mutate(astronautId.toString());
@@ -32,6 +32,7 @@ const ModalDeleteAstronaut = ({
       astronautName={astronautName}
       cancelRef={cancelRef as RefObject<HTMLButtonElement>}
       deleteAstronaut={deleteAstronaut}
+      isLoading={isLoading}
     />
   );
 };

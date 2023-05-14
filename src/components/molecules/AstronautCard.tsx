@@ -45,7 +45,12 @@ const AstronautCard: FC<
           {seePicture && (
             <Flex flex={1} maxHeight="100%" maxWidth={150}>
               {imageUrl && (
-                <Image objectFit="cover" boxSize="100%" src={imageUrl} />
+                <Image
+                  objectFit="cover"
+                  boxSize="100%"
+                  src={imageUrl}
+                  alt={`Image de l'astronaute ${name}`}
+                />
               )}
             </Flex>
           )}

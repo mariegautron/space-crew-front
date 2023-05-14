@@ -8,7 +8,7 @@ import Layout from "../components/organisms/Layout";
 const AddAstronaut: FC = () => {
   const { astronautService } = useApi();
 
-  const { mutate } = astronautService.useAddAstronaut();
+  const { mutate, isLoading } = astronautService.useAddAstronaut();
 
   const addAstronaut = (astronaut: AddAstronautBody) => {
     mutate(astronaut);
@@ -17,7 +17,7 @@ const AddAstronaut: FC = () => {
   return (
     <Layout>
       <Heading as="h1">Ajouter un astronaute</Heading>
-      <AddAstronautForm addAstronaut={addAstronaut} />
+      <AddAstronautForm addAstronaut={addAstronaut} isLoading={isLoading} />
     </Layout>
   );
 };

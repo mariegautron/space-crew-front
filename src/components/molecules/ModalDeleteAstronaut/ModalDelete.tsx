@@ -13,13 +13,14 @@ import { tokens } from "../../../theme/tokens";
 import GradientBorder from "../../atoms/GradientBackground";
 import SpaceButton from "../../atoms/SpaceButton";
 
-type ModalDeleteProps = {
+interface ModalDeleteProps {
   isOpen: boolean;
   onClose: () => void;
   astronautName: string;
   cancelRef: RefObject<HTMLButtonElement>;
   deleteAstronaut: () => void;
-};
+  isLoading: boolean;
+}
 
 const ModalDelete = ({
   onClose,
@@ -27,6 +28,7 @@ const ModalDelete = ({
   astronautName,
   cancelRef,
   deleteAstronaut,
+  isLoading,
 }: ModalDeleteProps) => {
   return (
     <AlertDialog
@@ -58,6 +60,7 @@ const ModalDelete = ({
                 onClick={onClose}
                 spaceButtonType="secondary"
                 spaceButtonLeftIcon
+                isLoading={isLoading}
               >
                 {astronautName} est encore vaillant.e
               </SpaceButton>
@@ -68,6 +71,7 @@ const ModalDelete = ({
                 spaceButtonLeftIcon
                 size="sm"
                 onClick={deleteAstronaut}
+                isLoading={isLoading}
               >
                 Retraite anticipée
               </SpaceButton>

@@ -8,15 +8,16 @@ export const URL = "https://space-crew-api.onrender.com";
 export const callApi = async <T>(
   url: string,
   method = "GET",
-  config?: RequestInit & { body?: BodyInit }
+  config?: RequestInit & { body?: string }
 ): Promise<ApiResponse<T>> => {
   const response = await fetch(`${import.meta.env.VITE_HOST || URL}${url}`, {
     ...config,
     method: method.toUpperCase(),
-    body: config?.body ? JSON.stringify(config.body) : undefined,
+    body: config?.body || undefined,
     headers: {
       ...(config?.headers ?? {}),
       "Content-Type": "application/json",
+      "Access-Control-Allow-Origin": "*",
     },
   });
 
