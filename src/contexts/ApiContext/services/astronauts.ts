@@ -28,6 +28,15 @@ export const useGetAstronauts = (
   });
 };
 
+export const useGetAstronautsById = (
+  astronautId: number
+): UseQueryResult<Astronaut, unknown> => {
+  return useQuery(['astronauts', astronautId], async () => {
+    const { data } = await callApi(`/astronauts/${astronautId}`);
+    return data;
+  });
+};
+
 export const useDeleteAstronaut = (): UseMutationResult<
   unknown,
   unknown,
@@ -98,6 +107,51 @@ export const useAddAstronaut = (): UseMutationResult<
           title: "Erreur lors de l'ajout.",
           description:
             "Une erreur est survenue lors de l'ajout de l'astronaute.",
+          status: 'error',
+          duration: 9000,
+          isClosable: true,
+        });
+      },
+    }
+  );
+};
+
+export const useUpdateAstronaut = (
+  astronautId: number
+): UseMutationResult<Astronaut | null, unknown, AddAstronautBody, unknown> => {
+  const queryClient = useQueryClient();
+  const toast = useToast();
+
+  return useMutation(
+    async (newAstronaut: AddAstronautBody) => {
+      const { data } = await callApi<Astronaut>(
+        `/astronauts/${astronautId}`,
+        'PUT',
+        {
+          body: JSON.stringify(newAstronaut),
+        }
+      );
+      return data;
+    },
+    {
+      onSuccess: (newAstronaut) => {
+        queryClient.invalidateQueries([
+          'astronauts',
+          (newAstronaut as Astronaut).id || null,
+        ]);
+        toast({
+          title: 'Astronaute modifié.',
+          status: 'success',
+          duration: 9000,
+          isClosable: true,
+        });
+      },
+      onError: (error) => {
+        console.log('Erreur: ', error);
+        toast({
+          title: 'Erreur lors de la modification.',
+          description:
+            "Une erreur est survenue lors de la modification de l'astronaute.",
           status: 'error',
           duration: 9000,
           isClosable: true,

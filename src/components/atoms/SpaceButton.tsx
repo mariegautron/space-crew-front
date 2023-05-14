@@ -94,10 +94,10 @@ const SpaceButton: FC<SpaceButtonProps> = ({
       size={size || 'lg'}
       colorScheme={colorScheme || 'green'}
       {...(!noIcon &&
-        spaceButtonLeftIcon && { leftIcon: icon != null || <ArrowBackIcon /> })}
+        spaceButtonLeftIcon && { leftIcon: icon || <ArrowBackIcon /> })}
       {...(!noIcon &&
         !spaceButtonLeftIcon && {
-          rightIcon: icon != null || <ArrowForwardIcon />,
+          rightIcon: icon || <ArrowForwardIcon />,
         })}
       color={textColor || 'blackAlpha.800'}
       {...(!colorScheme && {
