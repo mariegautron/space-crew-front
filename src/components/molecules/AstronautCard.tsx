@@ -15,6 +15,7 @@ import SpaceButton from '../atoms/SpaceButton';
 import ModalDeleteAstronaut from './ModalDeleteAstronaut';
 import StatusIndicator from '../atoms/StatusIndicator';
 import { type Astronaut } from '../../types/Astronaut';
+import ModalUpdateAstronaut from './ModalUpdateAstronaut';
 
 const AstronautCard: FC<
   Astronaut & { seePicture: boolean; preview?: boolean }
@@ -28,7 +29,17 @@ const AstronautCard: FC<
   seePicture,
   preview = false,
 }) => {
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  const {
+    isOpen: isOpenDelete,
+    onOpen: onOpenDelete,
+    onClose: onCloseDelete,
+  } = useDisclosure();
+
+  const {
+    isOpen: isOpenUpdate,
+    onOpen: onOpenUpdate,
+    onClose: onCloseUpdate,
+  } = useDisclosure();
 
   return (
     <>
@@ -82,14 +93,19 @@ const AstronautCard: FC<
 
             {!preview && id && (
               <Flex gap={tokens.spacing.s}>
-                <SpaceButton icon={<EditIcon />} size="sm" spaceButtonLeftIcon>
+                <SpaceButton
+                  icon={<EditIcon />}
+                  size="sm"
+                  spaceButtonLeftIcon
+                  onClick={onOpenUpdate}
+                >
                   Modifier
                 </SpaceButton>
                 <SpaceButton
                   colorScheme="red"
                   icon={<DeleteIcon />}
                   size="sm"
-                  onClick={onOpen}
+                  onClick={onOpenDelete}
                   spaceButtonLeftIcon
                 >
                   Suprimer
@@ -100,9 +116,17 @@ const AstronautCard: FC<
         </Stack>
       </Center>
       {id && (
+        <ModalUpdateAstronaut
+          isOpen={isOpenUpdate}
+          onClose={onCloseUpdate}
+          astronautName={name}
+          astronautId={id}
+        />
+      )}
+      {id && (
         <ModalDeleteAstronaut
-          isOpen={isOpen}
-          onClose={onClose}
+          isOpen={isOpenDelete}
+          onClose={onCloseDelete}
           astronautName={name}
           astronautId={id}
         />
